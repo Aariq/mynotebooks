@@ -11,3 +11,5 @@ Description: Just a simple notebook template I like to use for my analyses
 License: CC0
 Encoding: UTF-8
 LazyData: true
+URL: https://github.com/Aariq/mynotebooks
+BugReports: https://github.com/Aariq/mynotebooks/issues
