@@ -3,10 +3,11 @@ title: "Analysis Title"
 author: "Eric R. Scott"
 date: "Date Initiated"
 output: 
-  html_notebook:
+  html_notebook: 
+    highlight: kate
+    theme: yeti
     toc: yes
     toc_float: yes
-    theme: yeti
 ---
 
 ```{r setup, include=FALSE}
@@ -26,8 +27,8 @@ What is the goal of this notebook?
 
 # Load Data
 
-```{r include=FALSE}
-
+```{r data, echo=TRUE}
+df <- read_csv(here("data", ""))
 ```
 
 ## Data Dictionary
