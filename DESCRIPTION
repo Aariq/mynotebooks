@@ -1,11 +1,13 @@
 Package: mynotebooks
-Type: Package
-Title: What the Package Does (Title Case)
-Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Title: Just a simple notebook template
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Eric",
+           family = "Scott",
+           role = c("aut", "cre"),
+           email = "scottericr@gmail.com",
+           comment = c(ORCID = "0000-0002-7430-7879"))
+Description: Just a simple notebook template I like to use for my analyses
+License: CC0
 Encoding: UTF-8
 LazyData: true
