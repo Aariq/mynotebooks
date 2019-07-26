@@ -1,0 +1,4 @@
+name: My Notebook
+description: >
+   An R Notebook template with a floating table of contents and default code chunk folding.
+create_dir: FALSE

@@ -1,0 +1,40 @@
+---
+title: "Analysis Title"
+author: "Eric R. Scott"
+date: "Date Initiated"
+output: 
+  html_notebook:
+    toc: yes
+    toc_float: yes
+    theme: yeti
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+*Last compiled: `r Sys.Date()`*
+
+```{r packages, include=FALSE}
+library(tidyverse)
+library(here)
+```
+
+# Purpose
+
+What is the goal of this notebook?
+
+# Load Data
+
+```{r include=FALSE}
+
+```
+
+## Data Dictionary
+
+`Dataframe1`: My data
+
+- `col1`: A variable
+- `col2`: Another variable
+
+# Analysis
