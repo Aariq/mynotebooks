@@ -6,12 +6,15 @@
 #'
 #' @return a list
 #' @import glue
+#' @import crayon
 #' @importFrom purrr map2
+#' @importFrom lubridate tz
 #' @export
 #'
 #' @examples
 describe <- function(df){
-  foo <- function(x, colname) {
+  dfname <- as_name(enquo(df))
+  foo <- function(x, col_name) {
     x_class <- class(x)[1]
     class_abrev <- switch(x_class,
                           "character" = "<chr>",
@@ -25,25 +28,25 @@ describe <- function(df){
     if (is.factor(x)) {
       lvls <- levels(x)
       lvl_str <- glue_collapse(lvls, sep = ", ", width = 25, last = ", and ")
-      desc <-
-        readline(prompt = glue(
-          'Enter description for `{colname}` <fctr w/ {length(lvls)} levels>: '
-        ))
-      details <-
-        readline(prompt = glue("Describe how to interpret the levels ({lvl_str}): "))
+      cat("Enter description for", blue(glue("`{col_name}` <fctr w/ {length(lvls)} levels>")))
+      desc <- readline(prompt = "Description: ")
+      cat("Describe how to interpet the levels", blue(glue("({lvl_str})")))
+      details <-readline(prompt = "Levels: ")
 
       #posixct date times
     } else if (inherits(x, "POSIXct")) {
-      desc <- readline(prompt = glue("Enter description for `{colname}` {class_abrev}: "))
+      cat("Enter description for", blue(glue("`{col_name}` {class_abrev}.")))
+      desc <- readline(prompt = "Description: ")
       tz <- tz(x)
       if (tz != "")
         ans <-
         menu(
-          title = glue("Is '{tz(x)}' the correct time zone for `{colname}`?"),
+          title = glue("Is {green(tz(x))} the correct time zone for `{blue(col_name)}`?"),
           choices = c("Yes", "No")
         )
       if(ans == "No" | tz == "") {
-        tz <- readline(prompt = "Enter a timezone for `{colname}`: ")
+        cat(glue("Enter a timezone for `{blue(col_name)}`"))
+        tz <- readline(prompt = "Timezone: ")
       }
       details <- c("format: ISO (yyyy-mm-dd HH:MM:SS)", glue("time zone: {tz}"))
 
@@ -53,18 +56,22 @@ describe <- function(df){
 
       #double
     } else if (inherits(x, "numeric")) {
-      desc <- readline(prompt = glue("Enter description for `{colname}` {class_abrev}: "))
-      u <- readline(prompt = glue("What are the units for {colname}? "))
+      cat("Enter description for", blue(glue("`{col_name}` {class_abrev}.")))
+      desc <- readline(prompt = "Description: ")
+      cat(glue("what are the units for {blue(col_name)}?"))
+      u <- readline(prompt = "Units: ")
       details <- glue("Units: {u}")
 
       #everythign else
     } else {
-      desc <- readline(prompt = glue("Enter description for `{colname}` {class_abrev}: "))
+      cat("Enter description for", blue(glue("`{col_name}` {class_abrev}.")))
+      desc <- readline(prompt = "Description: ")
       details <- NULL
     }
     return(list(desc = desc, details = details))
   }
-  cat("Enter a description for this dataset.\n Include details such as the when, where, how, why, and by whom it was collected: ")
+  cat("Enter a description for", blue(glue("`{dfname}`")),
+"Include details such as the when, where, how, why, and by whom it was collected: ")
   gen_desc <- readline(prompt = "Description: ")
   col_desc <- map2(df, colnames(df), ~foo(.x, .y))
   return(list(gen_desc = gen_desc, col_desc = col_desc))
