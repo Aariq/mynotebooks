@@ -21,7 +21,6 @@ describe <- function(df){
                           "factor" = "<fct>",
                           "Date" = "<date>",
                           "POSIXct" = "<POSIXct>")
-
     #factors
     if (is.factor(x)) {
       lvls <- levels(x)
@@ -61,5 +60,8 @@ describe <- function(df){
     }
     return(list(desc = desc, details = details))
   }
-  map2(df, colnames(example), ~foo(.x, .y))
+  cat("Enter a description for this dataset.\n Include details such as the when, where, how, why, and by whom it was collected: ")
+  gen_desc <- readline(prompt = "Description: ")
+  col_desc <- map2(df, colnames(df), ~foo(.x, .y))
+  return(list(gen_desc = gen_desc, col_desc = col_desc))
 }
