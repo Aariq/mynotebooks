@@ -45,7 +45,11 @@ describe <- function(df){
       if(ans == "No" | tz == "") {
         tz <- readline(prompt = "Enter a timezone for `{colname}`: ")
       }
-      details <- glue("time zone: {tz}")
+      details <- c("format: ISO (yyyy-mm-dd HH:MM:SS)", glue("time zone: {tz}"))
+
+      #dates
+    } else if (inherits(x, "date")) {
+      details <- "format: ISO (yyyy-mm-dd)"
 
       #double
     } else if (inherits(x, "numeric")) {
