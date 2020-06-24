@@ -13,14 +13,12 @@ output:
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(here)
+library(conflicted)
 ```
 
 *Last compiled: `r Sys.Date()`*
-
-```{r packages, include=FALSE}
-library(tidyverse)
-library(here)
-```
 
 # Purpose
 
