@@ -1,6 +1,6 @@
 Package: mynotebooks
 Title: Just a simple notebook template
-Version: 0.0.0.9001
+Version: 0.0.0.9002
 Authors@R: 
     person(given = "Eric",
            family = "Scott",
@@ -13,3 +13,8 @@ Encoding: UTF-8
 LazyData: true
 URL: https://github.com/Aariq/mynotebooks
 BugReports: https://github.com/Aariq/mynotebooks/issues
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
+Imports: 
+    glue,
+    rstudioapi

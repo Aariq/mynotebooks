@@ -16,6 +16,9 @@ knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 library(here)
 library(conflicted)
+
+conflict_prefer("lag", "dplyr")
+conflict_prefer("filter", "dplyr")
 ```
 
 *Last compiled: `r Sys.Date()`*
@@ -32,9 +35,7 @@ df <- read_csv(here("data", ""))
 
 ## Data Dictionary
 
-`Dataframe1`: My data
+Use `df_dict(df)` to automatically insert a template markdown data dictionary at the location of your cursor
 
-- `col1`: A variable
-- `col2`: Another variable
 
 # Analysis
