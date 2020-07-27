@@ -4,7 +4,7 @@
 \alias{df_dict}
 \title{Insert data dictionary}
 \usage{
-df_dict(x)
+df_dict(x = NULL)
 }
 \arguments{
 \item{x}{a data frame}

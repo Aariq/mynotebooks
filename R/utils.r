@@ -12,16 +12,33 @@
 #' \dontrun{
 #' df_dict(warpbreaks)
 #' }
-df_dict <- function(x) {
+df_dict <- function(x = NULL) {
   adc <- rstudioapi::getSourceEditorContext()
+
+  src_txt <- adc$selection[[1]]$text
+
+  if (nzchar(src_txt)) {
+    eval(parse(text = sprintf("x <- %s", src_txt)))
+    df_name <- src_txt
+  } else {
+    df_name <- substitute(x)
+  }
+
+
   if(inherits(x, "data.frame")) {
     col_names <- colnames(x)
     col_types <- sapply(x, class)
-    header <- glue::glue("`{substitute(x)}`: description\n\n")
+    header <- glue::glue("`{df_name}`: <description>\n\n")
+    dict <- glue::glue("- `{col_names}` ({col_types}):")
+    out <- glue::glue_collapse(c(header, dict), sep = "\n")
+  } else if (is.null(x) & !nzchar(src_txt)){
+    col_names <- c("col1", "col2", "col3")
+    col_types <- c("type", "type", "type")
+    header <- glue::glue("`data_frame`: <description>\n\n")
     dict <- glue::glue("- `{col_names}` ({col_types}):")
     out <- glue::glue_collapse(c(header, dict), sep = "\n")
   } else {
-    stop("df_dict() currently only works on data frames")
+    stop("This feature only works for data.frame objects.")
   }
   rstudioapi::insertText(
     text = out,
@@ -29,3 +46,5 @@ df_dict <- function(x) {
     id = adc$id
   )
 }
+
+

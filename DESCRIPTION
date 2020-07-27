@@ -1,5 +1,5 @@
 Package: mynotebooks
-Title: Just a simple notebook template
+Title: A template and tools for data analysis R Markdown documents
 Version: 0.0.0.9002
 Authors@R: 
     person(given = "Eric",
@@ -7,7 +7,7 @@ Authors@R:
            role = c("aut", "cre"),
            email = "scottericr@gmail.com",
            comment = c(ORCID = "0000-0002-7430-7879"))
-Description: Just a simple notebook template I like to use for my analyses
+Description: A template for R Markdown that I like to use for data analysis.  Also, a utility for creating a metadata template from a dataframe.
 License: CC0
 Encoding: UTF-8
 LazyData: true

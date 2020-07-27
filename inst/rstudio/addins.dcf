@@ -1,0 +1,4 @@
+Name: Metadata template
+Description: Inserts a metadata template for the selected R object
+Binding: df_dict
+Interactive: false
