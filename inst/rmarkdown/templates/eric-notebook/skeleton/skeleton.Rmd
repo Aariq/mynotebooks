@@ -3,12 +3,15 @@ title: "Analysis Title"
 author: "Eric R. Scott"
 date: "Date Initiated"
 output: 
-  html_notebook: 
-    highlight: kate
-    theme: yeti
+  html_document: 
     toc: yes
     toc_float: yes
     number_sections: yes
+    highlight: kate
+    theme:
+      version: 4
+      bootswatch: journal
+
 ---
 
 ```{r setup, include=FALSE}
