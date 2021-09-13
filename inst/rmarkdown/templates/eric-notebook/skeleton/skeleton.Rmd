@@ -10,7 +10,7 @@ output:
     highlight: kate
     theme:
       version: 4
-      bootswatch: journal
+      bootswatch: flatly
 
 ---
 
